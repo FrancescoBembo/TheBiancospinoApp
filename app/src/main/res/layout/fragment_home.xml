@@ -1,36 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".HomeFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="730dp">
 
-    <ImageButton
-        android:id="@+id/home_banner1"
-        android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner_offerte"
-        android:background="@drawable/home_banner"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHomeRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05"/>
 
-    <ImageButton
-        android:id="@+id/home_banner2"
-        android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/banner_ricette"
-        android:background="@drawable/home_banner"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHomeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95"/>
+
+        <ImageButton
+            android:id="@+id/homeBanner1"
+            android:layout_width="wrap_content"
+            android:layout_height="220dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/home_banner"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner_offerte"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineHomeLeft"
+            app:layout_constraintStart_toStartOf="@+id/guidelineHomeRight"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/homeBanner2"
+            android:layout_width="wrap_content"
+            android:layout_height="220dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="340dp"
+            android:background="@drawable/home_banner"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner_ricette"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineHomeLeft"
+            app:layout_constraintStart_toStartOf="@+id/guidelineHomeRight"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
 
-</RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
