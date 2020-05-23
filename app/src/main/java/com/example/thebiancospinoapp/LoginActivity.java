@@ -23,9 +23,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent goToUserPageIntent = new Intent(LoginActivity.this, IntroActivity.class);
+                Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
 
-                startActivity(goToUserPageIntent);
+                startActivity(goToMainActivityIntent);
 
             }
         });
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //GO TO REGISTER PAGE
 
-        /*goRegister = findViewById(R.id.goToRegistrationBtn);
+        goRegister = findViewById(R.id.goToRegistrationBtn);
 
         goRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(goToRegistrationIntent);
 
             }
-        });*/
+        });
 
 
     }
