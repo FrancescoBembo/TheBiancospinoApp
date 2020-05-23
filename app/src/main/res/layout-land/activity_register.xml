@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLoginLeft"
@@ -21,74 +22,50 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineLoginTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLoginBot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.98" />
 
 
-    <Button
-        android:id="@+id/goToRegistrationBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:width="220dp"
-        android:height="20dp"
-        android:background="#00FFFFFF"
-        android:elevation="0dp"
-        android:text="Don't have an account yet?  Register!"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textSize="10sp"
-        android:textStyle=""
-        app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+    <!-- Login Button-->
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView3"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:contentDescription="logo"
         android:src="@drawable/ic_logo"
         app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineLoginTop" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/RegisterBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:height="44dp"
+        android:height="45dp"
         android:background="@drawable/filled_button_template"
         android:elevation="2dp"
-        android:text="Login"
+        android:text="Register"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle=""
         app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
-        app:layout_constraintTop_toBottomOf="@+id/mailField" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPswField" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:width="320dp"
         android:height="44dp"
         android:background="@drawable/google_login_button"
@@ -101,13 +78,12 @@
         android:textSize="21sp"
         android:textStyle=""
         app:layout_constraintBottom_toTopOf="@+id/guidelineLoginBot"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goToRegistrationBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -121,7 +97,6 @@
         android:textColor="#ffffff"
         android:textSize="21sp"
         android:textStyle=""
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button2"
@@ -132,7 +107,7 @@
         android:layout_width="280dp"
         android:layout_height="44dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/input_field_outline"
         android:ems="10"
         android:hint="Email"
@@ -141,7 +116,7 @@
         app:layout_constraintEnd_toStartOf="@+id/pswField"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/pswField"
@@ -159,5 +134,20 @@
         app:layout_constraintStart_toEndOf="@+id/mailField"
         app:layout_constraintTop_toTopOf="@+id/mailField" />
 
+    <EditText
+        android:id="@+id/confirmPswField"
+        android:layout_width="280dp"
+        android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:height="44dp"
+        android:background="@drawable/input_field_outline"
+        android:ems="10"
+        android:hint=" Confirm password"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/pswField"
+        app:layout_constraintStart_toStartOf="@+id/pswField"
+        app:layout_constraintTop_toBottomOf="@+id/pswField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
