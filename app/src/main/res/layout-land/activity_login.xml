@@ -21,11 +21,18 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLoginTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLoginBot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.95" />
 
 
     <Button
@@ -33,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:width="220dp"
         android:height="20dp"
         android:background="#00FFFFFF"
@@ -42,42 +50,27 @@
         android:textColor="@color/colorPrimary"
         android:textSize="10sp"
         android:textStyle=""
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="340dp"
-        android:layout_height="500dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:clickable="false"
-        android:foreground="@drawable/cardlogin_template"
         app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
         android:contentDescription="logo"
         android:src="@drawable/ic_logo"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" />
-
+        app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineLoginTop" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:height="44dp"
         android:background="@drawable/filled_button_template"
         android:elevation="2dp"
@@ -86,15 +79,16 @@
         android:textColor="#ffffff"
         android:textSize="21sp"
         android:textStyle=""
-        app:layout_constraintBottom_toTopOf="@+id/goToRegistrationBtn"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
+        app:layout_constraintTop_toBottomOf="@+id/mailField" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:width="320dp"
         android:height="44dp"
         android:background="@drawable/google_login_button"
@@ -106,13 +100,14 @@
         android:textColor="#000000"
         android:textSize="21sp"
         android:textStyle=""
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineLoginBot"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goToRegistrationBtn" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -126,41 +121,43 @@
         android:textColor="#ffffff"
         android:textSize="21sp"
         android:textStyle=""
-        app:layout_constraintBottom_toTopOf="@+id/guidelineLoginBot"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineLoginRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLoginLeft"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 
     <EditText
         android:id="@+id/mailField"
         android:layout_width="280dp"
         android:layout_height="44dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/input_field_outline"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/pswField"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view" />
+        app:layout_constraintEnd_toStartOf="@+id/pswField"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/pswField"
         android:layout_width="280dp"
         android:layout_height="44dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
         android:height="44dp"
         android:background="@drawable/input_field_outline"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/mailField"
+        app:layout_constraintTop_toTopOf="@+id/mailField" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
