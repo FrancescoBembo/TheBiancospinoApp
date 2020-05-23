@@ -11,31 +11,31 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="730dp">
+        android:minHeight="650dp">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
+            android:id="@+id/guidelineAccountLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.05" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
+            android:id="@+id/guidelineAccountRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.95" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
+            android:id="@+id/guidelineAccountTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.08" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
+            android:id="@+id/guidelineAccountBot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -45,8 +45,8 @@
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAccountLeft"
+            app:layout_constraintTop_toTopOf="@+id/guidelineAccountTop"
             app:srcCompat="@drawable/ic_avatar" />
 
 
@@ -98,7 +98,7 @@
             android:text="Gift cards:"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAccountLeft"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
@@ -110,7 +110,7 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineAccountRight"
             app:layout_constraintTop_toTopOf="@+id/gift_card" />
 
         <TextView
@@ -123,7 +123,7 @@
             android:text="Points:"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAccountLeft"
             app:layout_constraintTop_toBottomOf="@+id/gift_card" />
 
         <TextView
@@ -134,7 +134,7 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineAccountRight"
             app:layout_constraintTop_toTopOf="@+id/coin_points" />
 
         <Button
@@ -146,9 +146,9 @@
             android:textAllCaps="false"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline" />
+            app:layout_constraintBottom_toTopOf="@+id/guidelineAccountBot"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineAccountRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAccountLeft" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
