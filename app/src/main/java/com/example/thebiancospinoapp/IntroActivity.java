@@ -2,12 +2,11 @@ package com.example.thebiancospinoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +16,15 @@ public class IntroActivity extends AppCompatActivity {
 
     private ViewPager screenPager;
     IntroviewPagerAdapter introviewPagerAdapter;
+    TabLayout tabIndicator;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
+        tabIndicator = findViewById(R.id.tab_indicator);
 
         List<ScreenItem> mList = new ArrayList<>();
         mList.add(new ScreenItem("Shop anytime, anywhere!", "Shop at any time and decide whether to pick up your\norder or get it delivered at your doorstep.", R.drawable.onb1));
@@ -33,6 +35,10 @@ public class IntroActivity extends AppCompatActivity {
         introviewPagerAdapter = new IntroviewPagerAdapter(this,mList);
 
         screenPager.setAdapter(introviewPagerAdapter);
+
+
+        tabIndicator.setupWithViewPager(screenPager);
+
 
 
 
