@@ -1,6 +1,7 @@
 package com.example.thebiancospinoapp;
 
 import android.app.FragmentManager;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -36,10 +37,14 @@ public class ShopFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        View rootView = inflater.inflate(R.layout.fragment_shop, container, false);
         initImageBitmaps();
+        RecyclerView recyclerView = rootView.findViewById(R.id.recycler_view);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mTitles, mProd_prices, mThumbnailsUrl, this.getActivity());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shop, container, false);
+        return rootView;
 
 
 
@@ -47,60 +52,52 @@ public class ShopFragment extends Fragment{
 
     private void initImageBitmaps(){
 
+        mThumbnailsUrl.add("https://firebasestorage.googleapis.com/v0/b/thebiancospinoapp.appspot.com/o/Product1.png?alt=media&token=dbd69ab0-5daa-4dc8-8e1d-1e98ee1a960f");
+        mTitles.add("Pasta kamut");
+        mProd_prices.add("$3.99");
+
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 2");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 3");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 4");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 5");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 6");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 7");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 8");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 9");
         mProd_prices.add("$5.99");
 
         mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
+        mTitles.add("Product 10");
         mProd_prices.add("$5.99");
 
-        mThumbnailsUrl.add("");
-        mTitles.add("Product 1");
-        mProd_prices.add("$5.99");
-
-        initRecyclerView();
+        // initRecyclerView();
 
     }
 
 
-    private void initRecyclerView(){
-
-        RecyclerView recyclerView = getView().findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mTitles, mProd_prices, mThumbnailsUrl );
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
 
-
-    }
 
 }

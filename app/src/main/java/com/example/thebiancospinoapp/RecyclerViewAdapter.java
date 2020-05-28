@@ -21,20 +21,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mTitles = new ArrayList<>();
     private ArrayList<String> mProd_prices = new ArrayList<>();
     private ArrayList<String> mThumbnails = new ArrayList<>();
-    private com.example.thebiancospinoapp.ShopFragment ShopFragment;
+    private Context mContext;
 
-//    public RecyclerViewAdapter(ArrayList<String> mTitles, ArrayList<String> mProd_prices, ArrayList<String> mThumbnails, Context mContext) {
-//        this.mTitles = mTitles;
-//        this.mProd_prices = mProd_prices;
-//        this.mThumbnails = mThumbnails;
-//        this.mContext = mContext;
-//    }
-
-    public RecyclerViewAdapter(ShopFragment shopFragment, ArrayList<String> mTitles, ArrayList<String> mProd_prices, ArrayList<String> mThumbnails) {
+    public RecyclerViewAdapter(ArrayList<String> mTitles, ArrayList<String> mProd_prices, ArrayList<String> mThumbnails, Context mContext) {
         this.mTitles = mTitles;
         this.mProd_prices = mProd_prices;
         this.mThumbnails = mThumbnails;
-        this.ShopFragment = ShopFragment;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -50,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        Glide.with(ShopFragment)
+        Glide.with(mContext)
                 .asBitmap()
                 .load(mThumbnails.get(position))
                 .into(holder.thumbnail);
@@ -63,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
 
-                //Toast.makeText(ShopFragment, mTitles.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, mTitles.get(position), Toast.LENGTH_SHORT).show();
 
             }
         });
