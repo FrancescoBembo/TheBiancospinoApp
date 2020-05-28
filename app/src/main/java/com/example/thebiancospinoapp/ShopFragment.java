@@ -1,21 +1,13 @@
 package com.example.thebiancospinoapp;
 
-import android.app.FragmentManager;
-import android.graphics.Rect;
+
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentController;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.gms.dynamic.FragmentWrapper;
-
 import java.util.ArrayList;
 
 
@@ -44,6 +36,8 @@ public class ShopFragment extends Fragment{
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(mTitles, mProd_prices, mThumbnailsUrl, this.getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(),2));
+
+
         // Inflate the layout for this fragment
         return rootView;
 
@@ -93,7 +87,7 @@ public class ShopFragment extends Fragment{
         mTitles.add("Soya van dessert");
         mProd_prices.add("$3.99");
 
-        // initRecyclerView();
+
 
     }
 
