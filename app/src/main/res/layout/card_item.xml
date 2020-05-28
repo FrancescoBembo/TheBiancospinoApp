@@ -30,14 +30,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/thumbnail"
-                android:layout_marginBottom="0dp"
+                android:layout_marginBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:text="Product Name"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textStyle="normal"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/prod_price"
