@@ -12,7 +12,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view"
         android:clipToPadding="false"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical">
+
+
+
+
+
+
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 
