@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import java.util.ArrayList;
 
 
@@ -31,6 +33,7 @@ public class ShopFragment extends Fragment{
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_shop, container, false);
+
         initImageBitmaps();
         RecyclerView recyclerView = rootView.findViewById(R.id.recycler_view);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(mTitles, mProd_prices, mThumbnailsUrl, this.getActivity());
