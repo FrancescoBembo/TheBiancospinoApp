@@ -28,7 +28,7 @@
             app:layout_constraintGuide_percent="0.95"/>
 
         <ImageButton
-            android:id="@+id/homeBanner1"
+            android:id="@+id/deals_banner"
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_alignParentTop="true"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/homeBanner2"
+            android:id="@+id/recipe_banner"
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_alignParentTop="true"

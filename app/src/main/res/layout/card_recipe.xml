@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/parent_layout">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -18,50 +19,51 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="300dp"
+                android:id="@+id/Recipe_img"
+                android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:src="@mipmap/ic_launcher"
                 android:foreground="@drawable/gradient"
                 />
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/recipe_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/thumbnail"
-                android:layout_marginBottom="0dp"
+                android:layout_alignBottom="@+id/Recipe_img"
+                android:layout_marginBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:text="Product Name"
+                android:text="Recipe Name"
                 android:textStyle="normal"
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/prod_price"
+                android:id="@+id/prep_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thumbnail"
+                android:layout_below="@id/Recipe_img"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="$4.99"
+                android:text="25min"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="18sp"
+                android:drawableLeft="@drawable/ic_timer"
+                android:drawablePadding="10dp"/>
 
             <ImageView
                 android:id="@+id/icon_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thumbnail"
-                android:layout_alignEnd="@+id/thumbnail"
+                android:layout_below="@id/Recipe_img"
+                android:layout_alignEnd="@+id/Recipe_img"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/ic_add_to_cart" />
+                android:src="@drawable/ic_favorite" />
 
         </RelativeLayout>
 

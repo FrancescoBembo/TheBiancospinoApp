@@ -23,6 +23,7 @@
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:src="@mipmap/ic_launcher"
+                android:foreground="@drawable/gradient"
                 />
 
             <TextView
