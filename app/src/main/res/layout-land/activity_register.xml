@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/confirmPswField" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/g_login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -99,8 +99,8 @@
         android:textStyle=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/g_login_btn"
+        app:layout_constraintTop_toTopOf="@+id/g_login_btn" />
 
     <EditText
         android:id="@+id/mailField"

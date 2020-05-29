@@ -2,6 +2,8 @@
     <string name="app_name">TheBiancospinoApp</string>
 
 
+    <string name="facebook_app_id">725636351581904</string>
+    <string name="fb_login_protocol_scheme">fb725636351581904</string>
 
 
 </resources>

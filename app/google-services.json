@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "330922991082",
+    "firebase_url": "https://thebiancospinoapp.firebaseio.com",
+    "project_id": "thebiancospinoapp",
+    "storage_bucket": "thebiancospinoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330922991082:android:12c50ac98ea78dd2862693",
+        "android_client_info": {
+          "package_name": "com.example.thebiancospinoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330922991082-ih4vnfgdh2thnlm7cdpinfuftrajja6v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thebiancospinoapp",
+            "certificate_hash": "4628d3a5193b77c78d9ea7f27e1d491ba179d6f0"
+          }
+        },
+        {
+          "client_id": "330922991082-eqeq7srn787ctfmel81agku4pp6r0hma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDPmZiiNSJnbNu1ITYDJT-niL9dZe4JNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330922991082-eqeq7srn787ctfmel81agku4pp6r0hma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
