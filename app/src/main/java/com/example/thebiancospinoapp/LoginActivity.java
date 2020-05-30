@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     private CallbackManager mCallbackManager;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +121,9 @@ public class LoginActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             Toast.makeText(LoginActivity.this, "Singed In Succefully", Toast.LENGTH_SHORT).show();
+
             FirebaseGoogleAuth(acc);
+
 
             Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
 
@@ -139,13 +143,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Succefull", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Yep", Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
 
                 }
                 else{
-                    Toast.makeText(LoginActivity.this, "Nope", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Nope", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
 
@@ -162,7 +166,9 @@ public class LoginActivity extends AppCompatActivity {
             String personEmail = account.getEmail();
             Uri personPhoto = account.getPhotoUrl();
 
-            Toast.makeText(LoginActivity.this, personEmail , Toast.LENGTH_SHORT).show();
+
+
+            Toast.makeText(getBaseContext(), personEmail, Toast.LENGTH_SHORT).show();
         }
     }
 

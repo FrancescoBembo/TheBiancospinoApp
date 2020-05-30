@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="60dp"
 
         tools:context=".ShopFragment">
 
@@ -21,7 +21,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recycler_view"
+            android:id="@+id/recipe_recycler_view"
             android:clipToPadding="false"
             android:scrollbars="vertical"/>
 
@@ -33,13 +33,13 @@
         android:id="@+id/RecipeOfTheDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Recipe of the day"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Our recipes"
+        android:textColor="@color/colorPrimary"
         android:textSize="22dp"
-        android:textColor="@color/colorPrimary"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
