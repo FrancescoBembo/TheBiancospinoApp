@@ -13,12 +13,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private BottomNavigationView bottomNavigationView;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        name = getIntent().getStringExtra("name");
         bottomNavigationView = findViewById(R.id.bottomNav);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                         case R.id.account:
-                            fragment = new AccountFragment();
+                            fragment = new AccountFragment(name);
                             break;
                     }
 

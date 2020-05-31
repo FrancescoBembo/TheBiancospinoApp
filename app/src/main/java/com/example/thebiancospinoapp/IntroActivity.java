@@ -22,6 +22,7 @@ public class IntroActivity extends AppCompatActivity {
     Button btnNext;
     int position = 0;
     Button btnGetStatred;
+    String name;
 
 
     @Override
@@ -29,7 +30,7 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-
+        name = getIntent().getStringExtra("name");
         btnNext = findViewById(R.id.btn_next);
         BtnSkip = findViewById(R.id.btn_skip);
         tabIndicator = findViewById(R.id.tab_indicator);
@@ -132,6 +133,7 @@ public class IntroActivity extends AppCompatActivity {
     private void moveToMainActivity(){
 
         Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+        intent.putExtra("name", name);
         startActivity(intent);
 
     }

@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private int RC_SIGN_IN = 1;
     private CallbackManager mCallbackManager;
+    String presonName;
 
 
 
@@ -120,14 +121,14 @@ public class LoginActivity extends AppCompatActivity {
 
         try {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            Toast.makeText(LoginActivity.this, "Singed In Succefully", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(LoginActivity.this, "Singed In Succefully", Toast.LENGTH_SHORT).show();
 
             FirebaseGoogleAuth(acc);
 
 
-            Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
+            //Toast.makeText(getBaseContext(), this.presonName, Toast.LENGTH_SHORT).show();
 
-            startActivity(goToMainActivityIntent);
+
         }
         catch (ApiException e){
             Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -143,13 +144,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
-                    //Toast.makeText(LoginActivity.this, "Yep", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Yep", Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
 
                 }
                 else{
-                    //Toast.makeText(LoginActivity.this, "Nope", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Nope", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
 
@@ -166,9 +167,14 @@ public class LoginActivity extends AppCompatActivity {
             String personEmail = account.getEmail();
             Uri personPhoto = account.getPhotoUrl();
 
+            Toast.makeText(getBaseContext(), presonName, Toast.LENGTH_SHORT).show();
+
+            Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
+            goToMainActivityIntent.putExtra("name", presonName);
+            startActivity(goToMainActivityIntent);
 
 
-            Toast.makeText(getBaseContext(), personEmail, Toast.LENGTH_SHORT).show();
+
         }
     }
 
