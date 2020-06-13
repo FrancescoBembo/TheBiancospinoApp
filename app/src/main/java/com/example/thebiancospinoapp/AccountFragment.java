@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
@@ -30,6 +32,8 @@ public class AccountFragment extends Fragment {
 
 
     Button btnShowBarcode;
+//    BottomSheetBehavior mBottomSheetBehavior;
+//    LinearLayout mBottomSheet;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,9 +41,31 @@ public class AccountFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_account, container, false);
 
-        btnShowBarcode = view.findViewById(R.id.showBarcodeBTN);
+
         username = view.findViewById(R.id.username);
         username.setText(name);
+
+        btnShowBarcode = view.findViewById(R.id.showBarcodeBTN);
+        btnShowBarcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+//      mBottomSheet = view.findViewById(R.id.barcode_bottom_sheet);
+//
+//        mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
+//
+//        btnShowBarcode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//
+//            }
+//        });
 
 
 
