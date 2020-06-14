@@ -44,14 +44,25 @@ public class AccountFragment extends Fragment {
 
     Button btnLogout;
     Button btnShowBarcode;
-//    BottomSheetBehavior mBottomSheetBehavior;
-//    LinearLayout mBottomSheet;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        btnShowBarcode = view.findViewById(R.id.showBarcodeBTN);
+        btnShowBarcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BarcodeSheet barcodeSheet = new BarcodeSheet();
+                FragmentManager manager = getChildFragmentManager();
+                manager.beginTransaction().replace(R.id.acc_main_layout, barcodeSheet, barcodeSheet.getTag()).commit();
+                //manager.beginTransaction().replace(R.id.acc_main_layout, barcodeSheet, barcodeSheet.getTag()).commit();
+            }
+        });
 
 
         username = view.findViewById(R.id.username);
@@ -73,38 +84,6 @@ public class AccountFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
-
-
-
-        btnShowBarcode = view.findViewById(R.id.showBarcodeBTN);
-        btnShowBarcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-            }
-        });
-//      mBottomSheet = view.findViewById(R.id.barcode_bottom_sheet);
-//
-//        mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
-//
-//        btnShowBarcode.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-//
-//            }
-//        });
-
-
 
 
 
