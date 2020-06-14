@@ -101,22 +101,19 @@
         android:textSize="21sp"
         android:textStyle=""
         app:layout_constraintBottom_toTopOf="@+id/guidelineLoginBot"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/fb_login_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goToRegistrationBtn" />
 
-    <Button
-        android:id="@+id/button3"
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fb_login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:width="320dp"
         android:height="44dp"
         android:background="@drawable/facebook_login_button"
-        android:drawableLeft="@drawable/ic_fb_logo"
-        android:paddingLeft="38dp"
-        android:text="Log in with Facebook"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="21sp"
@@ -126,6 +123,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/g_login_btn"
         app:layout_constraintTop_toTopOf="@+id/g_login_btn" />
+
 
     <EditText
         android:id="@+id/mailField"

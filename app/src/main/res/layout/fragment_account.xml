@@ -150,5 +150,19 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineAccountRight"
             app:layout_constraintStart_toStartOf="@+id/guidelineAccountLeft" />
 
+        <Button
+            android:id="@+id/logoutBtn"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="#e50000"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="@+id/guidelineAccountBot"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineAccountRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAccountLeft" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

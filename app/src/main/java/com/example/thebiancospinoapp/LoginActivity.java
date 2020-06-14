@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -42,15 +43,18 @@ public class LoginActivity extends AppCompatActivity {
     Button goRegister;
     Button googleLoginBtn;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
     GoogleSignInClient mGoogleSignInClient;
     private int RC_SIGN_IN = 1;
     private CallbackManager mCallbackManager;
     String presonName;
     private LoginButton facebookLoginBtn;
     private static String TAG = "Facebook Authentication";
+    private AccessTokenTracker accessTokenTracker;
+
     String personPhoto;
 
-
+//TODO: fix fb login (up to showing fb activity)
 
 
 
@@ -62,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         facebookLoginBtn = findViewById(R.id.fb_login_btn);
+        facebookLoginBtn.setPermissions("email","public_profile");
         mCallbackManager = CallbackManager.Factory.create();
         facebookLoginBtn.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -80,6 +85,34 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser fUser = mAuth.getCurrentUser();
+                if (fUser != null) {
+                    updateFbUI (fUser);
+
+                }
+                else{
+                    updateFbUI(null);
+
+                }
+            }
+        };
+
+
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                if (currentAccessToken == null){
+                    mAuth.signOut();
+                }
+            }
+        };
+
+
 
 
 
@@ -103,8 +136,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
-                startActivity(goToMainActivityIntent);
+                Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -195,15 +228,17 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(getBaseContext(), presonName, Toast.LENGTH_SHORT).show();
 
-            Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
-            goToMainActivityIntent.putExtra("name", presonName);
-            goToMainActivityIntent.putExtra("photo", personPhoto);
-            startActivity(goToMainActivityIntent);
+            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
+            intent.putExtra("name", presonName);
+            intent.putExtra("photo", personPhoto);
+            startActivity(intent);
 
 
 
         }
     }
+
+
 
 
 
@@ -211,36 +246,43 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(TAG, "handleFacebookToken" + token);
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    Toast.makeText(LoginActivity.this, "yes fb", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "sign in with credential: Successful");
                     FirebaseUser fUser = mAuth.getCurrentUser();
                     updateFbUI (fUser);
                 }
                 else{
-                    Toast.makeText(LoginActivity.this, "Nope", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "No fb", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+
+
+
 
     private void updateFbUI(FirebaseUser fUser){
 
         if (fUser != null){
             String presonName = fUser.getDisplayName();
             String personPhoto = fUser.getPhotoUrl().toString();
+            Toast.makeText(LoginActivity.this, "yes fb", Toast.LENGTH_SHORT).show();
 
-            Toast.makeText(getBaseContext(), presonName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getBaseContext(), presonName, Toast.LENGTH_SHORT).show();
 
-            Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
-            goToMainActivityIntent.putExtra("name", presonName);
-            goToMainActivityIntent.putExtra("photo", personPhoto);
-            startActivity(goToMainActivityIntent);
-
+            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
+            intent.putExtra("name", presonName);
+            intent.putExtra("photo", personPhoto);
+            startActivity(intent);
         }
-
-
     }
+
+
+
 
 }
