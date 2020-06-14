@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -24,10 +26,13 @@ public class AccountFragment extends Fragment {
     String name;
     TextView username;
 
-    public AccountFragment(String name) {
+    String personPhoto;
+    ImageView photo;
+
+    public AccountFragment(String name, String personPhoto) {
         // Required empty public constructor
         this.name = name;
-
+        this.personPhoto = personPhoto;
     }
 
 
@@ -44,6 +49,16 @@ public class AccountFragment extends Fragment {
 
         username = view.findViewById(R.id.username);
         username.setText(name);
+
+
+        photo = view.findViewById(R.id.userPic);
+        Picasso.get().load(personPhoto).into(photo);
+
+
+
+
+
+
 
         btnShowBarcode = view.findViewById(R.id.showBarcodeBTN);
         btnShowBarcode.setOnClickListener(new View.OnClickListener() {

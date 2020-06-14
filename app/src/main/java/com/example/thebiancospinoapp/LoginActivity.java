@@ -7,11 +7,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.Login;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -21,11 +28,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.squareup.picasso.Picasso;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,6 +46,11 @@ public class LoginActivity extends AppCompatActivity {
     private int RC_SIGN_IN = 1;
     private CallbackManager mCallbackManager;
     String presonName;
+    private LoginButton facebookLoginBtn;
+    private static String TAG = "Facebook Authentication";
+    String personPhoto;
+
+
 
 
 
@@ -47,16 +61,35 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
+        facebookLoginBtn = findViewById(R.id.fb_login_btn);
+        mCallbackManager = CallbackManager.Factory.create();
+        facebookLoginBtn.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "OnSuccess" + loginResult);
+                handleFacebookToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+
+
         googleLoginBtn = findViewById(R.id.g_login_btn);
-
         mAuth = FirebaseAuth.getInstance();
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                                                             .requestIdToken(getString(R.string.default_web_client_id))
                                                             .requestEmail().build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
         googleLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,31 +100,24 @@ public class LoginActivity extends AppCompatActivity {
 
 
         loginButton = findViewById(R.id.loginBtn);
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
-
                 startActivity(goToMainActivityIntent);
-
             }
         });
 
 
+
+
         //GO TO REGISTER PAGE
-
         goRegister = findViewById(R.id.goToRegistrationBtn);
-
         goRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent goToRegistrationIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-
                 startActivity(goToRegistrationIntent);
-
             }
         });
 
@@ -144,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Yep", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Yep", Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
 
@@ -165,12 +191,13 @@ public class LoginActivity extends AppCompatActivity {
             String presonGivenName = account.getGivenName();
             String presonFamilyName = account.getFamilyName();
             String personEmail = account.getEmail();
-            Uri personPhoto = account.getPhotoUrl();
+            String personPhoto = account.getPhotoUrl().toString();
 
             Toast.makeText(getBaseContext(), presonName, Toast.LENGTH_SHORT).show();
 
             Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
             goToMainActivityIntent.putExtra("name", presonName);
+            goToMainActivityIntent.putExtra("photo", personPhoto);
             startActivity(goToMainActivityIntent);
 
 
@@ -178,5 +205,42 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+
+    private void handleFacebookToken(AccessToken token){
+        Log.d(TAG, "handleFacebookToken" + token);
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Log.d(TAG, "sign in with credential: Successful");
+                    FirebaseUser fUser = mAuth.getCurrentUser();
+                    updateFbUI (fUser);
+                }
+                else{
+                    Toast.makeText(LoginActivity.this, "Nope", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void updateFbUI(FirebaseUser fUser){
+
+        if (fUser != null){
+            String presonName = fUser.getDisplayName();
+            String personPhoto = fUser.getPhotoUrl().toString();
+
+            Toast.makeText(getBaseContext(), presonName, Toast.LENGTH_SHORT).show();
+
+            Intent goToMainActivityIntent = new Intent(LoginActivity.this, IntroActivity.class);
+            goToMainActivityIntent.putExtra("name", presonName);
+            goToMainActivityIntent.putExtra("photo", personPhoto);
+            startActivity(goToMainActivityIntent);
+
+        }
+
+
+    }
 
 }

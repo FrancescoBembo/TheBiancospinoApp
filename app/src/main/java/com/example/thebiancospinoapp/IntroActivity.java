@@ -23,7 +23,7 @@ public class IntroActivity extends AppCompatActivity {
     int position = 0;
     Button btnGetStatred;
     String name;
-
+    String personPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         name = getIntent().getStringExtra("name");
+        personPhoto = getIntent().getStringExtra("photo");
         btnNext = findViewById(R.id.btn_next);
         BtnSkip = findViewById(R.id.btn_skip);
         tabIndicator = findViewById(R.id.tab_indicator);
@@ -134,6 +135,7 @@ public class IntroActivity extends AppCompatActivity {
 
         Intent intent = new Intent(IntroActivity.this, MainActivity.class);
         intent.putExtra("name", name);
+        intent.putExtra("photo", personPhoto);
         startActivity(intent);
 
     }
